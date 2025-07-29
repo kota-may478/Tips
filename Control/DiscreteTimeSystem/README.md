@@ -83,7 +83,7 @@ Qd = c2d(Qc, Tu, 'tustin');
 
 ```
 
-$y[k]/u[k]$の分母をはらうと、
+$\frac{y[k]}{u[k]}$の分母をはらうと、
 ```math
 \left( a_2 z^2 + a_1 z + a_0 \right) y[k] = \left( b_2 z^2 + b_1 z + b_0 \right) u[k]
 ```
