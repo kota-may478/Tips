@@ -18,57 +18,57 @@
 ```math
 \frac{\text{d}u}{\text{d}t} \approx \frac{u[k]-u[k-1]}{T_u}
 ```
-$$
+```math
 \therefore \quad s\ u(s) = u[k] \frac{1-z^{-1}}{T_u}
-$$
+```
 より$s$と$z$の関係式を
-$$
+```math
 s = \frac{z-1}{T_u z}
-$$
+```
 と近似する。
 
 2. 前進差分方式
 
 前進差分方式は、ある値$u$の微分値を前進差分値として1次近似する手法であり、
-$$
+```math
 \frac{\text{d}u}{\text{d}t} \approx \frac{u[k+1]-u[k]}{T_u}
-$$
-$$
+```
+```math
 \therefore \quad s\ u(s) = u[k] \frac{z-1}{T_u}
-$$
+```
 より$s$と$z$の関係式を
-$$
+```math
 s = \frac{z-1}{T_u}
-$$
+```
 と近似する。
 
 3. 双一次変換（タスティン変換）
 
 双一次変換は、ある値$u$の積分値を台形近似する手法であり、その出力を$y$とすると、
-$$
+```math
 y[k+1] = y[k] + T_u \frac{u[k+1]+u[k]}{2}
-$$
+```
 より$s$と$z$の関係式を
-$$
+```math
 s = \frac{2}{T_u} \frac{z-1}{z+1}
-$$
+```
 と近似する。
 
 以下では連続時間伝達関数の離散時間伝達関数への変換例、そのC言語における実装例について述べる。
 なお以下では元の連続時間伝達関数の安定性を比較的保存しやすい双一次変換を用いる。
 
 ある入力$u$から出力$y$への連続時間伝達関数
-$$
+```math
 G(s) = \frac{\omega_n^2}{s^2 + 2\zeta_n \omega_n s + \omega_n^2}
-$$
+```
 を、ある入力$u[k]$から出力$y[k]$への離散時間伝達関数$G(z)$に変換することを考える。
 $s = \frac{2}{T_u} \frac{z-1}{z+1}$を$G(s)$に代入すれば良く、
-$$
+```math
 \frac{y[k]}{u[k]} = \frac{\omega_n^2}{\left( \frac{2}{T_u} \frac{z-1}{z+1} \right)^2 + 2\zeta_n \omega_n \left( \frac{2}{T_u} \frac{z-1}{z+1} \right) + \omega_n^2}
-$$
-$$
+```
+```math
 \therefore \quad \frac{y[k]}{u[k]} = \frac{b_2 z^2 + b_1 z + b_0}{a_2 z^2 + a_1 z + a_0} \quad \tag{1}
-$$
+```
 と変形できる。
 ただし$a_0$, $a_1$, $a_2$, $b_0$, $b_1$, $b_2$は計算により導出される係数である。
 なおMATLABの場合は以下の通りに関数c2dを使用し、計算される離散時間伝達関数Qdの係数を確認することで$a_0$, $a_1$, $a_2$, $b_0$, $b_1$, $b_2$を求められる（$\zeta_n$, $\omega_n$は適当なパラメータとする）。
@@ -84,15 +84,15 @@ Qd = c2d(Qc, Tu, 'tustin');
 ```
 
 式(1)の分母をはらうと、
-$$
+```math
 \left( a_2 z^2 + a_1 z + a_0 \right) y[k] = \left( b_2 z^2 + b_1 z + b_0 \right) u[k]
-$$
-$$
+```
+```math
 \therefore \quad a_2 y[k+2] + a_1 y[k+1] + a_0 y[k] = b_2 u[k+2] + b_1 u[k+1] b_0
-$$
-$$
+```
+```math
 \therefore \quad y[k+2] = -\frac{a_1}{a_2} y[k+1] -\frac{a_0}{a_2} y[k] + \frac{b_2}{a_2} u[k+2] + \frac{b_1}{a_2} u[k+1] + \frac{b_0}{a_2} u[k]
-$$
+```
 となる。
 $u[0]$, $u[1]$, $y[0]$, $y[1]$を適当な値に設定し、$y[2]$以降を決定することで所望の離散時間伝達関数をC言語として実装することができる。
 計算のとき、$a_0$, $a_1$, $a_2$, $b_0$, $b_1$, $b_2$を小数点以下可能な限り細かく取得することがより精度の良い計算のために必要である。
