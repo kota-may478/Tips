@@ -15,9 +15,9 @@
 1. 後退差分方式
 
 後退差分方式は、ある値$u$の微分値を後退差分値として1次近似する手法であり、
-$$
+```math
 \frac{\text{d}u}{\text{d}t} \approx \frac{u[k]-u[k-1]}{T_u}
-$$
+```
 $$
 \therefore \quad s\ u(s) = u[k] \frac{1-z^{-1}}{T_u}
 $$
