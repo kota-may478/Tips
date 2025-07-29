@@ -19,7 +19,7 @@
 \frac{\text{d}u}{\text{d}t} \approx \frac{u[k]-u[k-1]}{T_u}
 ```
 ```math
-\therefore \quad s\ u(s) = u[k] \frac{1-z^{-1}}{T_u}
+\therefore \quad s\ u(s) = \frac{1-z^{-1}}{T_u} u[k]
 ```
 より$s$と$z$の関係式を
 ```math
@@ -34,7 +34,7 @@ s = \frac{z-1}{T_u z}
 \frac{\text{d}u}{\text{d}t} \approx \frac{u[k+1]-u[k]}{T_u}
 ```
 ```math
-\therefore \quad s\ u(s) = u[k] \frac{z-1}{T_u}
+\therefore \quad s\ u(s) = \frac{z-1}{T_u} u[k]
 ```
 より$s$と$z$の関係式を
 ```math
