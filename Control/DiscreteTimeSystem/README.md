@@ -66,9 +66,8 @@ $s = \frac{2}{T_u} \frac{z-1}{z+1}$を$G(s)$に代入すれば良く、
 ```math
 \frac{y[k]}{u[k]} = \frac{\omega_n^2}{\left( \frac{2}{T_u} \frac{z-1}{z+1} \right)^2 + 2\zeta_n \omega_n \left( \frac{2}{T_u} \frac{z-1}{z+1} \right) + \omega_n^2}
 ```
-
 ```math
-\therefore \quad \frac{y[k]}{u[k]} = \frac{b_2 z^2 + b_1 z + b_0}{a_2 z^2 + a_1 z + a_0} \quad \tag{1}
+\therefore \quad \frac{y[k]}{u[k]} = \frac{b_2 z^2 + b_1 z + b_0}{a_2 z^2 + a_1 z + a_0}
 ```
 と変形できる。
 ただし$a_0$, $a_1$, $a_2$, $b_0$, $b_1$, $b_2$は計算により導出される係数である。
@@ -84,7 +83,7 @@ Qd = c2d(Qc, Tu, 'tustin');
 
 ```
 
-式(1)の分母をはらうと、
+$y[k]/u[k]$の分母をはらうと、
 ```math
 \left( a_2 z^2 + a_1 z + a_0 \right) y[k] = \left( b_2 z^2 + b_1 z + b_0 \right) u[k]
 ```
