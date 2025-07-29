@@ -66,6 +66,7 @@ $s = \frac{2}{T_u} \frac{z-1}{z+1}$を$G(s)$に代入すれば良く、
 ```math
 \frac{y[k]}{u[k]} = \frac{\omega_n^2}{\left( \frac{2}{T_u} \frac{z-1}{z+1} \right)^2 + 2\zeta_n \omega_n \left( \frac{2}{T_u} \frac{z-1}{z+1} \right) + \omega_n^2}
 ```
+
 ```math
 \therefore \quad \frac{y[k]}{u[k]} = \frac{b_2 z^2 + b_1 z + b_0}{a_2 z^2 + a_1 z + a_0} \quad \tag{1}
 ```
